@@ -3,7 +3,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-require __DIR__ . '/../lib/functions.php';
+require __DIR__ . '/../vendor/autoload.php';
+
 class FunctionsTest extends TestCase{
     public function testAddTwoNegativeNumbers(): void{
         $this->assertSame(-3,add(-1,-1));
