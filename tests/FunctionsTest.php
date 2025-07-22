@@ -7,7 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 class FunctionsTest extends TestCase{
     public function testAddTwoNegativeNumbers(): void{
-        $this->assertSame(-3,add(-1,-1));
+        $this->assertSame(-2,add(-1,-1));
     }
     public function testAdd(): void{
         $this->assertSame(3,add(1,2));
@@ -18,7 +18,7 @@ class FunctionsTest extends TestCase{
     }
 
     public function testAddPositiveAndNegativeNumber(): void{
-        $this->assertSame(3,add(1,-2));
+        $this->assertSame(-1,add(1,-2));
     }
 
 }
