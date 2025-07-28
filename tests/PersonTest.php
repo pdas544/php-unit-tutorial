@@ -16,9 +16,9 @@ class PersonTest extends TestCase{
 
     #[Test]
     public function FullNameWithoutSurname(){
-//        $person = new Person();
-//        $person->setFirstName('John');
-//        $this->assertSame('John', $person->getFullName());
-        $this->markTestIncomplete('It is not implemented yet');
+        $person = new Person();
+        $person->setFirstName('John');
+        $this->assertSame('John', $person->getFullName());
+
     }
 }

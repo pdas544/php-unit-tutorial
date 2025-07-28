@@ -3,8 +3,8 @@
 namespace App;
 class Person
 {
-    private $firstName;
-    private $lastName;
+    private string $firstName;
+    private string $lastName;
 
     /**
      * @return mixed
@@ -40,6 +40,6 @@ class Person
 
     public function getFullName(): string
     {
-        return $this->firstName . ' ' . $this->lastName;
+        return trim($this->firstName . ' ' . ($this->lastName ?? null));
     }
 }
