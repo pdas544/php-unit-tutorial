@@ -1,31 +1,49 @@
 <?php
+
+/***
+ * Fixtures: These are used at each test is run - two methods are available
+ * - setUp(): run before each test
+ * - tearDown(): run after each test for clearing resources.
+ *
+ */
 declare(strict_types=1);
 
 use App\Queue;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\Depends;
 
 final class QueueTest extends TestCase{
-    public function testNewQueueIsEmpty(): Queue{
-        $queue = new Queue();
-        $this->assertSame(0, $queue->getSize());
 
-        return $queue;
+    private Queue $queue;
+
+
+    protected function setUp(): void{
+        $this->queue = new Queue();
+    }
+    public function testNewQueueIsEmpty(): void{
+
+        $this->assertSame(0, $this->queue->getSize());
+
+
     }
 
-    #[Depends('testNewQueueIsEmpty')]
-    public function testEnqueue(Queue $queue): Queue{
 
-        $queue->enqueue('John');
-        $this->assertSame(1, $queue->getSize());
+    public function testEnqueue(): void{
 
-        return $queue;
+        $this->queue->enqueue('John');
+        $this->assertSame(1, $this->queue->getSize());
+
     }
 
-    #[Depends('testEnqueue')]
-    public function testDequeueAndReturn(Queue $queue): void{
 
-        $this->assertSame('John', $queue->dequeue());
+    public function testDequeueAndReturn(): void{
 
+        $this->queue->enqueue('John');
+        $this->assertSame('John', $this->queue->dequeue());
+
+    }
+
+    public function testDequeueThrowsException(): void{
+        $this->expectException(\UnderflowException::class);
+        $this->queue->dequeue();
     }
 }

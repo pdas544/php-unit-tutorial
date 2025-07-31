@@ -15,7 +15,7 @@ class Queue
     public function dequeue(): string
     {
         if($this->isEmpty()){
-            throw new \Exception('Queue is empty');
+            throw new \UnderFlowException('Queue is empty');
         }
         return array_shift($this->items);
     }
