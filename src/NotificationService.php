@@ -1,7 +1,11 @@
 <?php
 
+// Removed the use statement to cause a class reference error
+// use NotificationException;
 
-class NotificationService{
+
+class NotificationService
+{
     /**
      * @param Mailer $mailer
      */
@@ -9,9 +13,16 @@ class NotificationService{
     {
 
     }
-    public function sendNotification(string $to, string $body): bool{
+
+    public function sendNotification(string $to, string $body): bool
+    {
 
         $subject = 'New message';
-        return $this->mailer->sendEmail($to, $subject, $body);
+        try {
+            return $this->mailer->sendEmail($to, $subject, $body);
+        } catch (\RuntimeException $e) {
+            throw new NotificationException('Could not send message', 0, $e);
+        }
+        return true;
     }
 }
