@@ -96,19 +96,6 @@ php-unit-tutorial/
 - **Environment Variables**: None required.
 - **Configuration Files**: None required.
 
-## 🤝 Contributing
-We welcome contributions! Here's how you can get started:
-
-### Development Setup
-1. Clone the repository.
-2. Install dependencies using `composer install`.
-3. Run the tests using `vendor/bin/phpunit`.
-
-### Code Style Guidelines
-- Follow PSR-12 coding standards.
-- Use PHP 8.4 or later.
-- Write clear and concise comments.
-
 ## 📝 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
